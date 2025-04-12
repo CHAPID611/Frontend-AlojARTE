@@ -1,0 +1,68 @@
+<div class="register-container">
+  <h2>Registro</h2>
+  <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <input type="email" class="form-control" formControlName="email" placeholder="Email">
+      <div class="error-message" *ngIf="registroForm.get('email')?.touched && registroForm.get('email')?.invalid">
+        {{ getErrorMessage('email') }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input type="password" class="form-control" formControlName="password" placeholder="Contraseña">
+      <div class="error-message" *ngIf="registroForm.get('password')?.touched && registroForm.get('password')?.invalid">
+        {{ getErrorMessage('password') }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input type="password" class="form-control" formControlName="confirmPassword" placeholder="Confirmar Contraseña">
+      <div class="error-message" *ngIf="registroForm.get('confirmPassword')?.touched && registroForm.hasError('mismatch')">
+        {{ getErrorMessage('confirmPassword') }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="name" placeholder="Nombre">
+      <div class="error-message" *ngIf="registroForm.get('name')?.touched && registroForm.get('name')?.invalid">
+        {{ getErrorMessage('name') }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="lastname" placeholder="Apellido">
+      <div class="error-message" *ngIf="registroForm.get('lastname')?.touched && registroForm.get('lastname')?.invalid">
+        {{ getErrorMessage('lastname') }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input type="date" class="form-control" formControlName="birthdate">
+      <div class="error-message" *ngIf="registroForm.get('birthdate')?.touched && registroForm.get('birthdate')?.invalid">
+        {{ getErrorMessage('birthdate') }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="dni" placeholder="DNI">
+      <div class="error-message" *ngIf="registroForm.get('dni')?.touched && registroForm.get('dni')?.invalid">
+        {{ getErrorMessage('dni') }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input type="tel" class="form-control" formControlName="phone" placeholder="Teléfono">
+      <div class="error-message" *ngIf="registroForm.get('phone')?.touched && registroForm.get('phone')?.invalid">
+        {{ getErrorMessage('phone') }}
+      </div>
+    </div>
+
+    <button type="submit" class="btn-register" [disabled]="!registroForm.valid">
+      Registrarse
+    </button>
+
+    <div class="error-message" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+  </form>
+</div>
